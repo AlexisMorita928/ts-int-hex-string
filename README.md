@@ -47,3 +47,10 @@ Returns a lowercase hex string without leading zeros unless `pad` is true.
 
 Returns a bigint. Throws on empty strings, invalid characters, or values that
 do not fit in the given bit width.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
